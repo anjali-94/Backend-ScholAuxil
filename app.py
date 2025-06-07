@@ -43,9 +43,14 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 db = SQLAlchemy(app)
 
-# Initialize Firebase Admin SDK
-cred = credentials.Certificate("./scholarauxil-1a121-firebase-adminsdk-fbsvc-820968ef4f.json")
-firebase_admin.initialize_app(cred)
+# Initialize Firebase Admin SDK from environment variable
+cred_data = os.environ.get('FIREBASE_CREDENTIALS_JSON')
+if cred_data:
+    firebase_cred = credentials.Certificate(json.loads(cred_data))
+    firebase_admin.initialize_app(firebase_cred)
+else:
+    raise Exception("FIREBASE_CREDENTIALS_JSON environment variable not set")
+
 
 BIBIFY_API_BASE = 'https://api.bibify.org'
 @app.route('/')
