@@ -1,0 +1,68 @@
+.env
+# === Python Bytecode ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# === Virtual Environments ===
+venv/
+.env/
+.venv/
+env/
+
+# === Package/Build Info ===
+*.egg-info/
+dist/
+build/
+
+# === Jupyter/IPython ===
+.ipynb_checkpoints/
+
+# === VS Code / PyCharm / IDEs ===
+.vscode/
+.idea/
+
+# === OS Files ===
+.DS_Store
+Thumbs.db
+
+# === Logs and Temp Files ===
+*.log
+*.tmp
+
+# === Environment Config ===
+.env
+.env.*
+
+# === Compiled Object Files (optional) ===
+*.so
+*.dll
+*.dylib
+
+# === PyTorch and CUDA Cache (optional but recommended) ===
+*.pt
+*.pth
+__torch_cache__/
+.cache/
+torch_cache/
+*.onnx
+
+# === Image Processing ===
+*.tif
+*.tiff
+*.png
+*.jpg
+*.jpeg
+*.bmp
+
+# === Test/Benchmark Output (optional) ===
+results/
+runs/
+
+# === Custom app files (if any) ===
+/instance/
+
+
+# firebase key
+scholarauxil-1a121-firebase-adminsdk-fbsvc-820968ef4f.json
