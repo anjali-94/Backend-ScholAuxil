@@ -20,8 +20,6 @@ from dotenv import load_dotenv
 load_dotenv()
 import logging
 
-allowed_origins = os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
-
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -30,7 +28,7 @@ UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
 ALLOWED_EXTENSIONS = {'pdf', 'txt', 'doc', 'docx'}  
 
 app = Flask(__name__)
-CORS(app, origins=allowed_origins)
+CORS(app)
 
 API_KEY = os.getenv("OPENROUTER_API_KEY")
 PLAGIARISM_CHECK_API_KEY = os.getenv("PLAGIARISM_API_KEY")
@@ -53,8 +51,7 @@ else:
     raise Exception("FIREBASE_CREDENTIALS_JSON environment variable not set")
 
 
-# BIBIFY_API_BASE = 'https://api.bibify.org'
-BIBIFY_API_BASE = os.getenv("BIBIFY_API_BASE_URL")
+BIBIFY_API_BASE = 'https://api.bibify.org'
 
 @app.route('/')
 def home():
