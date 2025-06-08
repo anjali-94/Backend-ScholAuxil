@@ -53,7 +53,9 @@ else:
     raise Exception("FIREBASE_CREDENTIALS_JSON environment variable not set")
 
 
-BIBIFY_API_BASE = 'https://api.bibify.org'
+# BIBIFY_API_BASE = 'https://api.bibify.org'
+BIBIFY_API_BASE = os.getenv("BIBIFY_API_BASE_URL")
+
 @app.route('/')
 def home():
     return jsonify({"message": "ScholarAuxil API is running!"})
