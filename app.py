@@ -20,6 +20,8 @@ from dotenv import load_dotenv
 load_dotenv()
 import logging
 
+allowed_origins = os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
+
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -28,8 +30,7 @@ UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
 ALLOWED_EXTENSIONS = {'pdf', 'txt', 'doc', 'docx'}  
 
 app = Flask(__name__)
-CORS(app)
-# CORS(app,origins=["http://localhost:5173"]) 
+CORS(app, origins=allowed_origins)
 
 API_KEY = os.getenv("OPENROUTER_API_KEY")
 PLAGIARISM_CHECK_API_KEY = os.getenv("PLAGIARISM_API_KEY")
