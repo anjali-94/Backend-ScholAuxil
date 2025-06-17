@@ -28,7 +28,8 @@ UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
 ALLOWED_EXTENSIONS = {'pdf', 'txt', 'doc', 'docx'}  
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "https://schol-auxil-frontend-w4cr.vercel.app"}})
+# CORS(app, resources={r"/api/*": {"origins": "https://schol-auxil-frontend-w4cr.vercel.app"}})
+CORS(app)
 
 API_KEY = os.getenv("OPENROUTER_API_KEY")
 PLAGIARISM_CHECK_API_KEY = os.getenv("PLAGIARISM_API_KEY")
@@ -42,13 +43,13 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 db = SQLAlchemy(app)
 
-# Initialize Firebase Admin SDK from environment variable
-cred_data = os.environ.get('FIREBASE_CREDENTIALS_JSON')
-if cred_data:
-    firebase_cred = credentials.Certificate(json.loads(cred_data))
-    firebase_admin.initialize_app(firebase_cred)
-else:
-    raise Exception("FIREBASE_CREDENTIALS_JSON environment variable not set")
+# # Initialize Firebase Admin SDK from environment variable
+# cred_data = os.environ.get('FIREBASE_CREDENTIALS_JSON')
+# if cred_data:
+#     firebase_cred = credentials.Certificate(json.loads(cred_data))
+#     firebase_admin.initialize_app(firebase_cred)
+# else:
+#     raise Exception("FIREBASE_CREDENTIALS_JSON environment variable not set")
 
 
 BIBIFY_API_BASE = 'https://api.bibify.org'
